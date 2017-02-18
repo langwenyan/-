@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" ng-app="myapp">
+<head>
+	<meta charset="UTF-8">
+	<!-- 宽度为设备宽度，初始缩放比例为一，用户最小最大缩放比例为一，不允许用户手机缩放 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+	<!-- 禁止iOS设备将数字作为拨号连接、邮箱自动发送，点击地图跳转 -->
+	<meta name="format-detection" content="telephone=no,email=no,adress=no">
+	<!-- 强制全屏显示 -->
+	<meta name="full-screen" content="yes">
+	<!-- 开启对webapp的支持 -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- webapp应用下状态条(平模顶部条)的颜色，默认值为default(白色或黑色半透明) -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<!-- 禁止浏览器从缓存中访问页面内容 -->
+	<meta http-epuiv="Pragma" content="no-cache">
+	<title>Document</title>
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<header class="header">
+			<h3>美食</h3>
+		</header>
+		<nav class="nav">
+			<span ui-sref="cate" ui-sref-active="active">美食</span>
+			<span ui-sref="pai" ui-sref-active="active">排序</span>
+			<span ui-sref="shai" ui-sref-active="active">筛选</span>
+		</nav>
+		<div class="main">
+			<section class="cate" ui-view>
+				<dl>
+					<dt>
+						<img src="" alt="">
+					</dt>
+					<dd>
+						<h2>
+							<span><b>品牌</b>丸龟制面（新世界店）</span>
+							<p><em>保</em><em>票</em><em>准</em></p>
+						</h2>
+						<p class="pin">
+							<span class="pin-left"><i></i><em>4.5</em>月售<b>1471</b></span>
+							<span class="pin-right"><b>准时达</b><i>蜂鸟专送</i></span>
+						</p>
+						<p class="pei">
+							<span><em>￥20起送</em>/<em>配送费￥5</em></span>
+							<span><i>528m</i>/<b>45分钟</b></span>
+						</p>
+					</dd>
+				</dl>
+			</section>
+		</div>
+	</div>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-ui-router.js"></script>
+<script>
+	var app=angular.module("myapp",['ui.router']);
+	app.config(function($stateProvider,$urlRouterProvider){
+		$stateProvider
+		.state('cate',{
+			url:'/',
+			templateUrl:'page/cate.html'
+		})
+		.state('pai',{
+			url:'/pai',
+			templateUrl:'page/pai.html'
+		})
+		.state('shai',{
+			url:'/shai',
+			templateUrl:'page/shai.html'
+		})
+	})
+</script>
+</html>
